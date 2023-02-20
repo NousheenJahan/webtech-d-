@@ -1,66 +1,52 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $name = $_POST['email'];
-    $name = $_POST['password'];
-    $name = $_POST['confirmpassword'];
-    if (empty($name)) {
-        echo "Name is Empty";
-    }
-    else {
-        echo $name;
-        }
-        if (empty($name))
-         {
-            echo "Email is Empty";
-            }
-            else {
-                echo $email;
-                }
-                }
-                ?>
-                <!DOCTYPE html> 
-                <html>
-                    <head>
-                        <title>Person Profile</title>
-                    </head>
-                        <body>
-                        <form method="POST" action=" <?php echo $_SERVER['PHP_SELF'];
-                        ?>">
-                       <fieldset>
-                             <legend>REGISTRATION</legend>
-                             <label for ="name"> Name: </label> 
-                             <input type="text" name="name" value=""><br>
-                             <hr>
-                             <label for ="email"> Email: </label>
-                             <input type="email" name="email" value=""><br>
-                             <hr>
-                             <label for ="user name"> User Name: </label>
-                             <input type="text" name="username" value=""><br>
-                             <hr>
-                             <label for ="password"> Password: </label>
-                             <input type="password" name="password" value=""><br>
-                             <hr>
-                             <label for ="confirmpassword"> Confirm Password: </label>
-                             <input type="password" name="confirmpassword" value=""><br>
-                             <hr>
-                        
+$ename="";
+if ($_SERVER["REQUEST_METHOD"] == "GET")
+{
+    if(empty($_GET['name'])) 
+{
+    $ename="";
+    echo $ename;
 
-                             <fieldset>
-                             <legend>Gender :</legend>
-                             <input type="radio" name="gender" value=""/>Male
-                             <input type="radio" name="gender" value=""/>Female
-                             <input type="radio" name="gender" value=""/>Other
-                             </fieldset>
+}
+else
+$ename= $_GET['name'];
+}
 
-                             <fieldset>
-                                <legend>Date of Birth:</legend>
-                                <input type="number" name="" value="">/<input type="number" name="" value="">/ <input type="number" name="" value="">(dd/m/yyy)<br>
-                                <hr>
-                                <input type="submit" name="submit" value="Submit"> 
-                                <input type="reset" name="reset" value="Reset">
-                             </fieldset>
+$eemail="";
+if ($_SERVER["REQUEST_METHOD"] == "GET")
+{
+    if(empty($_GET['email']))
+{
+    $eemail="";
+    echo $eemail;
+}
+else
+ $eemail= $_GET['email'];
+}
+?>
 
-                       </fieldset>
-                       </body>
-                </html>
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>Registration</title>
+        </head>
+        <body> 
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="get">
+
+                 <fieldset>
+                    <legend>REGISTRATION</legend>
+
+                     Name: <input type="text" name="name" placeholder = "Enter your name"> <br> <hr> 
+                     Eamil: <input type="text" name="email" placeholder = "Enter your Gmail"><br><hr>
+                     Password: <input type="text" name="pass" placeholder = "Enter your Password"> <br> <hr> 
+                     <label for="img">Your image:</label>
+                     <input type="file" id="img" name="img" accept="image/*"> <br> <hr>
+                     <button>Submit</button>
+
+                </fieldset>
+                </form>
+            </body>
+            </html>
